@@ -1,0 +1,39 @@
+.create-main {
+	display:flex;
+	flex:1;
+	background-color:white;
+	border-radius:0.5rem;
+	border:1px solid gray;
+	flex-direction:column;
+	row-gap:1rem;
+	padding:1rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+	
+}
+
+.create-form {
+	display:flex;
+	flex-direction:column;
+	margin-left:0.5rem;
+	row-gap:1rem;
+	
+}
+
+.create-input {
+	height:24px;
+	border-radius:0.25rem;
+	border:1px solid;
+	padding:1rem;
+}
+
+.create-users-submit {
+		padding:0.5rem;
+		border-radius:0.25rem;
+		font-family:BlinkMacSystemFont;
+		font-weight:700;
+		color:rgb(13,101,214);
+		background:rgb(215,236,255);
+		border:none;
+	}
+}

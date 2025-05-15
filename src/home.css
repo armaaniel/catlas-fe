@@ -1,0 +1,117 @@
+.home-parent {
+	padding:1rem;
+	display:flex;
+}
+
+.home-left {
+	width:30%;
+}
+
+.home-right{
+	display:flex;
+	flex:1;
+	flex-direction:column;
+	row-gap:1rem;
+}
+
+.home-right-one {
+	flex:1;
+	background-color:#4B6172;
+	border-radius:0.5rem;
+	padding:1rem;
+	color:white;
+	font-weight:500;
+	gap:1rem;
+		display:flex;
+	flex-direction:column;
+}
+
+.catlas-text-two {
+	font-family:BlinkMacSystemFont;
+	font-weight:500;
+}
+
+.home-right-two {
+	display:flex;
+	flex:1;
+	background-color:white;
+	border-radius:0.5rem;
+	border:1px solid gray;
+	flex-direction:column;
+	row-gap:3rem;
+	padding:1rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+	
+}
+
+.home-right-two-details {
+	margin-left:0.5rem;
+	display:grid;
+	grid-template-columns: 0.5fr 1fr;
+	row-gap:0.25rem;
+}
+
+.home-right-two-details-parent {
+	display:flex;
+	flex-direction:column;
+	row-gap:1rem;
+	width:85%;
+	
+}
+
+.details-text {
+	font-family:BlinkMacSystemFont;
+	font-weight:light;
+	color:rgb(64,68,82);
+	font-weight:400;
+}
+
+.home-right-two-roles {
+	display:flex;
+	margin-left:0.5rem;
+	gap:0.5rem;
+	flex-wrap: wrap
+}
+
+.roles-text {
+	padding:0.5rem;
+	border-radius:0.25rem;
+	font-family:BlinkMacSystemFont;
+	font-weight:700;
+	color:rgb(13,101,214);
+	background:rgb(215,236,255);
+}
+
+.side-button {
+	font-family:BlinkMacSystemFont;
+	font-weight:500;
+	text-decoration:none;
+	font-size:18px;
+	padding:0.25rem;
+	color:#424770;
+}
+
+.side-button-active {
+	font-family:BlinkMacSystemFont;
+	font-weight:500;
+	padding:0.25rem;
+	color:#4A9AFF;
+	text-decoration:none;
+	font-size:18px;
+}
+
+.sidebar-button-container {
+	padding:1rem;
+	margin-left:1rem;
+	row-gap:0.5rem;
+	display:flex;
+	flex-direction:column;
+}
+
+.home-right-three {
+	display:flex;
+	flex-direction:column;
+	row-gap:1rem;
+	flex-wrap:wrap;
+}
