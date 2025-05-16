@@ -1,4 +1,8 @@
 import './createusers.css'
+import { gql, useMutation } from '@apollo/client';
+import { useState } from 'react';
+
+
 
 const CREATE_USER = gql`
 mutation CreateUsers($firstName: String!, $lastName: String!, $email: String!, $age: String!, $gender: String!) {
@@ -25,60 +29,61 @@ interface UserFormData {
 }
 
 
-const [formData, setFormData] = useState<UserFormData>({
-	
-	firstName:'',
-	lastName:'',
-	age:0,
-	gender:'',
-	email:''
-	
-})
 
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-	const {name, value} = e.target
-	
-	setFormData({...formData, [name]: value})
-}
-
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-	try {
-		const result = await createUser({ 
-			variables: {
-			firstName:formData.firstName,
-			lastName:formData.lastName,
-			email:formData.email,
-			age:formData.age,
-			gender:formData.gender }
-			
-	})
-	
-	if (result.data) {
-	
-		console.log(result.data)
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          age: 0,
-          gender: ''
-        });
-	}
-	
-	} catch (err) {
-		
-		console.error(err)
-}
-}
 
 
 
 function CreateUsers() {
 	
+	const [formData, setFormData] = useState<UserFormData>({
+	
+		firstName:'',
+		lastName:'',
+		age:0,
+		gender:'',
+		email:''
+	
+	})
 
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+		const {name, value} = e.target
+	
+		setFormData({...formData, [name]: value})
+	}
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+	    e.preventDefault();
+
+		try {
+			const result = await createUser({ 
+				variables: {
+				firstName:formData.firstName,
+				lastName:formData.lastName,
+				email:formData.email,
+				age:formData.age,
+				gender:formData.gender }
+			
+		})
+	
+		if (result.data) {
+	
+			console.log(result.data)
+	        setFormData({
+	          firstName: '',
+	          lastName: '',
+	          email: '',
+	          age: 0,
+	          gender: ''
+	        });
+		}
+	
+		} catch (err) {
+		
+			console.error(err)
+	}
+	}
+	
 	
 	return (
 	
