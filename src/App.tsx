@@ -3,6 +3,8 @@ import Home from './Home';
 import Navbar from './Navbar'
 import MainLayout from './MainLayout'
 import CreateUsers from './CreateUsers'
+import Users from './Users'
+import ViewUsers from './ViewUsers'
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
 	<Route element={<MainLayout/>}>
   		<Route path ='/' element={<Home />} />
   		<Route path ='/create_users' element={<CreateUsers />} />
+		<Route path = '/users/' element={<ViewUsers />} />
+		<Route path = '/users/:id' element={<Users />} />
 	</Route>
   	</Routes>
   </BrowserRouter>

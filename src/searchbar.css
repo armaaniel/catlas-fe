@@ -1,0 +1,44 @@
+.search-results-container {
+	display:flex;
+	flex-direction:column;
+	position:absolute;
+	z-index:100;
+	background-color:white;
+	border-radius:0.5rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+	transition:0.5s ease;	
+}
+
+.search-parent {	
+	width:100%;
+	
+}
+
+.nav-search-div-two {
+	display:flex;
+}
+
+.search-results {
+    list-style-type: none;
+}
+
+.search-result-item {
+	padding:1rem;
+	font-family:BlinkMacSystemFont;
+	font-weight:light;
+	color:rgb(64,68,82);
+	font-weight:400;
+	
+}
+.search-result-item:hover {
+	background-color:#E1E3E6;
+    cursor: pointer;
+	
+}
+
+.results-text {
+	font-family:BlinkMacSystemFont;
+	font-weight:500;
+	padding:0.5rem;
+}

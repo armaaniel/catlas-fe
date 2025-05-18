@@ -14,23 +14,32 @@ mutation CreateUsers($firstName: String!, $lastName: String!, $email: String!, $
 	age: $age,
 	gender: $gender,
 }) {
-	name
+	user {
+	firstName
+	lastName
 	}
+	errors
+}
 }`;
 
 interface UserFormData {
 
 	firstName:string,
 	lastName:string,
-	age:number,
+	age:string,
 	gender:string,
-	email:string,
+	email:string
 
 }
 
-
-
-
+interface CreateUserResponse {
+	
+	firstName:string,
+	lastName:string,
+	age:string,
+	gender:string,
+	email:string
+}
 
 
 function CreateUsers() {
@@ -39,11 +48,13 @@ function CreateUsers() {
 	
 		firstName:'',
 		lastName:'',
-		age:0,
+		age:'',
 		gender:'',
 		email:''
 	
 	})
+	
+	const [createUser, {loading, data}] = useMutation<CreateUserResponse>(CREATE_USER);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -73,7 +84,7 @@ function CreateUsers() {
 	          firstName: '',
 	          lastName: '',
 	          email: '',
-	          age: 0,
+	          age: '',
 	          gender: ''
 	        });
 		}
@@ -92,35 +103,37 @@ function CreateUsers() {
 	
 	<h3 class='catlas-text'>Create User</h3>
 	
-	<form class='create-form'>
+    {data && <p className="catlas-text-two">User created successfully!</p>}
+	
+	<form class='create-form' onSubmit={handleSubmit}>
 	
 	<div>
 	<h4 class='catlas-text-two'>First Name</h4>
-	<input type='text' class='create-input'/>
+	<input type='text' class='create-input' name='firstName' value={formData.firstName} onChange={handleChange} required/>
 	</div>
 	
 	<div>
 	<h4 class='catlas-text-two'>Last Name</h4>
-	<input type='text' class='create-input'/>
+	<input type='text' class='create-input' name='lastName' value={formData.lastName} onChange={handleChange} required/>
 	</div>
 	
 	<div>
 	<h4 class='catlas-text-two'>Email</h4>
-	<input type='email' class='create-input'/>
+	<input type='email' class='create-input' name='email' value={formData.email} onChange={handleChange} required/>
 	</div>
 	
 	<div>
 	<h4 class='catlas-text-two'>Age</h4>
-	<input type='number' class='create-input'/>
+	<input type='number' class='create-input' name='age' value={formData.age} onChange={handleChange} required/>
 	</div>
 	
 	<div>
 	<h4 class='catlas-text-two'>Gender</h4>
-	<input type='text' class='create-input'/>
+	<input type='text' class='create-input' name='gender' value={formData.gender} onChange={handleChange} required/>
 	</div>
 	
 	<div>
-	<input type='submit' class='create-users-submit'/>
+	<input type='submit' class='create-users-submit' disabled={loading} value='submit'/>
 	</div>
 	
 	

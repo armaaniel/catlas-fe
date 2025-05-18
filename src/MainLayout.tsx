@@ -14,16 +14,16 @@ function MainLayout() {
 	
 		<div class='sidebar-button-container'>
 		
-		<NavLink to="/" className={({ isActive }) => 
-		  isActive ? "side-button-active" : "side-button"
-		}>
+		<NavLink to="/" className={ ({ isActive }) => isActive ? "side-button-active" : "side-button"}>
 		  Overview
 		</NavLink>
 		
-		<NavLink to="/create_users" className={({ isActive }) => 
-		  isActive ? "side-button-active" : "side-button"
-		}>
+		<NavLink to="/create_users" className={({ isActive }) => isActive ? "side-button-active" : "side-button"}>
 		  Create Users
+		</NavLink>
+		
+		<NavLink to="/users/" className={({ isActive }) => isActive ? "side-button-active" : "side-button"}>
+		  View Users
 		</NavLink>
 				
 		</div>

@@ -36,7 +36,6 @@
 	flex:1;
 	background-color:white;
 	border-radius:0.5rem;
-	border:1px solid gray;
 	flex-direction:column;
 	row-gap:3rem;
 	padding:1rem;
@@ -62,7 +61,6 @@
 
 .details-text {
 	font-family:BlinkMacSystemFont;
-	font-weight:light;
 	color:rgb(64,68,82);
 	font-weight:400;
 }

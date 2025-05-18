@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import './navbar.css'
+import Searchbar from './Searchbar'
 
 
 
@@ -12,8 +13,6 @@ function Navbar() {
 		navigate('/');
 		toggleDropdown();
 	}
-	
-	
 	
 	const [isOpen, setIsOpen] = useState(false);
 		
@@ -55,22 +54,7 @@ function Navbar() {
 			
 			<div class='nav-search-div'>
 			
-			<div class='search-svg-div'>
-			
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24">
-			      <path 
-			        d="m14 14-2.867-2.867m1.534-3.8A5.333 5.333 0 1 1 2 7.333a5.333 5.333 0 0 1 10.667 0Z" 
-			        stroke="#32302F" 
-			        stroke-width="1.8" 
-			        stroke-linecap="round" 
-			        stroke-linejoin="round"
-			        fill="none">
-			      </path>
-			    </svg>
-				
-			</div>
-			
-			<input type='search' class ='searchbar' placeholder='User Search'/>
+			<Searchbar />
 			
 			</div>
 		</div>
