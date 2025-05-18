@@ -29,6 +29,8 @@
 	font-weight:light;
 	color:rgb(64,68,82);
 	font-weight:400;
+	transition:0.5s ease;	
+	
 	
 }
 .search-result-item:hover {
@@ -41,4 +43,7 @@
 	font-family:BlinkMacSystemFont;
 	font-weight:500;
 	padding:0.5rem;
+	transition:0.5s ease;	
+	
 }
+

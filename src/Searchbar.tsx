@@ -103,7 +103,7 @@ const Searchbar = () => {
 				<h3 className='results-text'>results</h3>
 		          <div className="search-result-item">No users found</div>
 		        </div>
-		      )}
+		      )}}
 		    </>
 		  );
 		};
