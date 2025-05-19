@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Navbar from './Navbar'
-import MainLayout from './MainLayout'
-import CreateUsers from './CreateUsers'
-import Users from './Users'
-import ViewUsers from './ViewUsers'
+import Home from './views/Home';
+import Navbar from './components/Navbar'
+import MainLayout from './components/MainLayout'
+import CreateUsers from './views/CreateUsers'
+import Users from './views/Users'
+import ViewUsers from './views/ViewUsers'
 
 function App() {
 
