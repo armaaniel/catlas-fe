@@ -21,6 +21,8 @@
 
 .search-results {
     list-style-type: none;
+	transition:0.5s ease;	
+	
 }
 
 .search-result-item {
