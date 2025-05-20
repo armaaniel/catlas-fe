@@ -27,8 +27,6 @@ const Searchbar = () => {
 
     const navigate = useNavigate();
 	
-	
-
     const handleSearchChange = (e) => {
 
         setSearchTerm(e.target.value);
@@ -98,7 +96,7 @@ const Searchbar = () => {
 
     <div class='search-parent'>
 
-    <input type='search' className='searchbar' placeholder='User Search' value={searchTerm} onChange={handleSearchChange} />
+    <input type='search' className='searchbar' placeholder="User Search" value={searchTerm} onChange={handleSearchChange} />
 
   </div>
   </div>
