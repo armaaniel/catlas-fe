@@ -36,9 +36,6 @@ interface CreateUserResponse {
 	
 	firstName:string,
 	lastName:string,
-	age:string,
-	gender:string,
-	email:string
 }
 
 
@@ -74,20 +71,14 @@ function CreateUsers() {
 				email:formData.email,
 				age:formData.age,
 				gender:formData.gender }
-			
 		})
-	
-		if (result.data) {
-	
-			console.log(result.data)
-	        setFormData({
+		      setFormData({
 	          firstName: '',
 	          lastName: '',
 	          email: '',
 	          age: '',
 	          gender: ''
 	        });
-		}
 	
 		} catch (err) {
 		

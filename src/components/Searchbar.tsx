@@ -116,12 +116,11 @@ const Searchbar = () => {
                 )}
 				
 				{debouncedSearchTerm && searchResults.length === 0 && showResults && (
-						          <div className="search-result-item">No users found</div>
+				<div className="search-result-item">No users found</div>
+				
 						      )}
 				
                 </div>
-
-    
               </>
             );
           };
