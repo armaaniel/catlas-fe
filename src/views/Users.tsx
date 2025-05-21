@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import ModifyUser from '../components/ModifyUser.tsx'
