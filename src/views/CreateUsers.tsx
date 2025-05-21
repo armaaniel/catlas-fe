@@ -94,7 +94,7 @@ function CreateUsers() {
 	
 	<h3 class='catlas-text'>Create User</h3>
 	
-    {data && <p className="catlas-text-two">User created successfully!</p>}
+    {data && <p className="catlas-text-two">{data.createUser.user.firstName} {data.createUser.user.lastName} created successfully!</p>}
 	
 	<form class='create-form' onSubmit={handleSubmit}>
 	
