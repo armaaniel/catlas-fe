@@ -7,7 +7,7 @@ import '../stylesheets/usersoverview.css'
 
 const FETCH_USER_DATA = gql`
 query fetchUserData($id: ID!) {
-	usersWithPositionsById(id: $id) {
+	usersById(id: $id) {
 	firstName
 	middleName
 	lastName
@@ -30,10 +30,10 @@ function UsersOverview() {
 		variables: {id},
 	    fetchPolicy: 'no-cache'});
 			
-    if (loading || !data?.usersWithPositionsById) return null;
+    if (loading || !data?.usersById) return null;
     if (error) return <div>Error: {error.message}</div>;
 	
-	const userData = data.usersWithPositionsById;	
+	const userData = data.usersById;	
 	
 	console.log('userData.positions:', userData.positions);
 	
