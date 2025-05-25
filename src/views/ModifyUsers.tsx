@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
 import ModifyUser from '../components/ModifyUser.tsx'
 
 
@@ -9,10 +11,13 @@ const FETCH_USER_DATA = gql`
 query fetchUserData($id: ID!) {
 	usersById(id: $id) {
 	firstName
+	middleName
 	lastName
-	age
+	dateOfBirth
 	gender
 	email
+	balance
+	
 }}`
 
 const MODIFY_USER = gql`
@@ -44,20 +49,24 @@ function Users() {
 	
 	const [userData, setUserData] = useState({
 		firstName:'',
+		middleName:'',
 		lastName:'',
 		email:'',
 		gender:'',
-		age:''
+		dateOfBirth:'',
+		balance:''
 	})
 	
 	useEffect(() => {
 		if (data?.usersById) {
 			setUserData({
 				firstName:data.usersById.firstName,
+				middleName:data.usersById.middleName,
 				lastName:data.usersById.lastName,
 				email:data.usersById.email,
-				age:data.usersById.age,
-				gender:data.usersById.gender
+				dateOfBirth:data.usersById.dateOfBirth,
+				gender:data.usersById.gender,
+				balance:data.usersById.balance
 			})
 		}
 	}, [data]);		
@@ -126,6 +135,18 @@ function Users() {
 	
 	<>
 	
+	<div>
+	
+	<NavLink to={`/users/overview/${id}`} className={ ({ isActive }) => isActive ? "side-button-active" : "side-button"}>
+	  Overview
+	</NavLink>
+	
+	<NavLink to={`/users/modifyusers/${id}`} className= { ({ isActive }) => isActive ? "side-button-active" : "side-button"}>
+	  Modify User
+	</NavLink>
+	
+	</div>
+	
 	<div class='home-right-two'>
 	<h3 class='catlas-text'>{userData.firstName} {userData.lastName}</h3>
 	
@@ -133,17 +154,24 @@ function Users() {
 		<h3 class='catlas-text'>Details</h3>
 	
 			<div class='home-right-two-details'>
+			
+			<p class='details-text'>Email</p>
+			<p class='details-text'>{userData.email}</p>
+			
 			<p class='details-text'>First Name</p>
 			<p class='details-text'>{userData.firstName}</p>
+			
+			<p class='details-text'>Middle Name</p>
+			<p class='details-text'>{userData.middleName}</p>
 			
 			<p class='details-text'>Last Name</p>
 			<p class='details-text'>{userData.lastName}</p>
 			
-			<p class='details-text'>Age</p>
-			<p class='details-text'>{userData.age}</p>
+			<p class='details-text'>Balance</p>
+			<p class='details-text'>{userData.balance}</p>
 			
-			<p class='details-text'>Email</p>
-			<p class='details-text'>{userData.email}</p>
+			<p class='details-text'>Date of Birth</p>
+			<p class='details-text'>{userData.dateOfBirth}</p>
 			
 			<p class='details-text'>Gender</p>
 			<p class='details-text'>{userData.gender}</p>

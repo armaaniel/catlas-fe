@@ -42,7 +42,7 @@ const Searchbar = () => {
 
     const handleUserSelect = (user) => {
 
-        navigate(`/users/${user.id}`)
+        navigate(`/users/overview/${user.id}`)
         setSearchTerm('');
 
     };
