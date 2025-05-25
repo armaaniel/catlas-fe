@@ -141,6 +141,10 @@ function Users() {
 	  Overview
 	</NavLink>
 	
+	<NavLink to={`/users/activity/${id}`} className= { ({ isActive }) => isActive ? "side-button-active" : "side-button"}>
+	  Activity
+	</NavLink>
+	
 	<NavLink to={`/users/modifyusers/${id}`} className= { ({ isActive }) => isActive ? "side-button-active" : "side-button"}>
 	  Modify User
 	</NavLink>

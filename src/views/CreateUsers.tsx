@@ -5,20 +5,22 @@ import { useState } from 'react';
 
 
 const CREATE_USER = gql`
-mutation CreateUsers($firstName: String!, $lastName: String!, $email: String!, $age: String!, $gender: String!) {
+mutation CreateUsers($firstName: String!, $middleName: String!, $lastName: String!, $email: String!, $dateOfBirth: ISO8601Date!, 
+$gender: String!) {
 	
 	createUser(input: {
 	firstName: $firstName,
+	middleName: $middleName,
 	lastName: $lastName,
 	email: $email,
-	age: $age,
+	password: $password,
+	dateOfBirth: $dateOfBirth,
 	gender: $gender,
 }) {
 	user {
 	firstName
 	lastName
 	}
-	errors
 }
 }`;
 

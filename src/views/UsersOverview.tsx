@@ -34,9 +34,7 @@ function UsersOverview() {
     if (error) return <div>Error: {error.message}</div>;
 	
 	const userData = data.usersById;	
-	
-	console.log('userData.positions:', userData.positions);
-	
+		
 	return (
 	
 	<>
@@ -98,13 +96,13 @@ function UsersOverview() {
 		<tr class='portfolio-row'>
 			<th class='portfolio-row-heading'>Symbol</th>
 			<th class='portfolio-row-heading'>Shares</th>
-			<th class='portfolio-row-heading'>Price</th>
+			<th class='portfolio-row-heading'>Current Price</th>
 			<th class='portfolio-row-heading'>Market Value</th>	
 		</tr>
 	</thead>
 	
 	<tbody>
-	{userData.positions && userData.positions.map(position => (
+	{userData.positions.map(position => (
 	    <tr key={position.symbol} class ='portfolio-row'>
 		
 	      <td class='shares-cell'>

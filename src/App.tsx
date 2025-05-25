@@ -6,6 +6,8 @@ import CreateUsers from './views/CreateUsers'
 import UsersOverview from './views/UsersOverview'
 import ViewUsers from './views/ViewUsers'
 import ModifyUsers from './views/ModifyUsers'
+import UsersActivity from './views/UsersActivity'
+
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
 		<Route path = '/users/' element={<ViewUsers />} />
 		<Route path = '/users/overview/:id' element={<UsersOverview />} />
 		<Route path = '/users/modifyusers/:id' element={<ModifyUsers />} />
+		<Route path = '/users/activity/:id' element={<UsersActivity />} />
+		
 	</Route>
   	</Routes>
   </BrowserRouter>
