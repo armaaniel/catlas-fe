@@ -3,8 +3,6 @@ import { gql, useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-import ModifyUser from '../components/ModifyUser.tsx'
-
 
 
 const FETCH_USER_DATA = gql`
@@ -21,31 +19,28 @@ query fetchUserData($id: ID!) {
 }}`
 
 const MODIFY_USER = gql`
-mutation ModifyUser($firstName: String!, $lastName: String!, $age: String!, $gender: String!, $email: String!) {
+mutation ModifyUser($firstName: String!, $middleName: String!, $lastName: String!, $dateOfBirth: ISO8601Date!, $gender: String!, 
+$email: String!, $balance: Float!) {
 	
 modifyUser(input: { 
-	firstName: $firstName, lastName: $lastName, age: $age, gender: $gender, email: $email 
+	firstName: $firstName, middleName: $middleName, lastName: $lastName, dateOfBirth: $dateOfBirth, gender: $gender, email: $email,
+	balance: $balance 
 }) {
 	user {
 		firstName
+		middleName
 		lastName
-		age
+		dateOfBirth
 		gender
 		email
+		balance
 	}
-	errors
 }
 }`
 
-function Users() {
+function ModifyUsers() {
 	
     const {id} = useParams();
-	
-	
-	const {loading, error, data} = useQuery(FETCH_USER_DATA, {
-		variables: {id},
-	    fetchPolicy: 'no-cache'});
-	
 	
 	const [userData, setUserData] = useState({
 		firstName:'',
@@ -57,46 +52,55 @@ function Users() {
 		balance:''
 	})
 	
-	useEffect(() => {
-		if (data?.usersById) {
-			setUserData({
-				firstName:data.usersById.firstName,
-				middleName:data.usersById.middleName,
-				lastName:data.usersById.lastName,
-				email:data.usersById.email,
-				dateOfBirth:data.usersById.dateOfBirth,
-				gender:data.usersById.gender,
-				balance:data.usersById.balance
-			})
-		}
-	}, [data]);		
-	
-	const [modifyUser, { loading: modifyLoading, error: modifyError, data: modifyData }] = useMutation(MODIFY_USER);
-	
 	const [formData, setFormData] = useState({
 	
-		firstName:'',
-		lastName:'',
-		age:'',
-		gender:'',
 		email:'',
+		firstName:'',
+		middleName:'',
+		lastName:'',
+		dateOfBirth:'',
+		gender:'',
+		balance:'',
 	})
 	
-	useEffect(() => {
-		if (userData) {
+	const {loading, error, data} = useQuery(FETCH_USER_DATA, {
+		variables: {id},
+	    fetchPolicy: 'no-cache'});
 		
+	const [modifyUser, { loading: modifyLoading, error: modifyError, data: modifyData }] = useMutation(MODIFY_USER);
+			
+	useEffect( () => {
+		
+		if (data) {
+			
+			const user = data.usersById
+			
+			setUserData({
+				firstName:user.firstName,
+				middleName:user.middleName,
+				lastName:user.lastName,
+				email:user.email,
+				dateOfBirth:user.dateOfBirth,
+				gender:user.gender,
+				balance:user.balance
+			});
+			
 			setFormData({
+				firstName:user.firstName,
+				middleName:user.middleName,
+				lastName:user.lastName,
+				email:user.email,
+				gender:user.gender,
+				dateOfBirth:user.dateOfBirth,
+				balance:user.balance
+			})
+		}
+	}, [data]);
 		
-			firstName:userData.firstName,
-			lastName:userData.lastName,
-			email:userData.email,
-			gender:userData.gender,
-			age:userData.age
-		})
-	}
-	}, [userData]);
+    if (loading || !data) return null;
+    if (error) return <div>Error: {error.message}</div>;
 	
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e) => {
 
 		const {name, value} = e.target
 
@@ -110,11 +114,15 @@ function Users() {
 		try {
 	
 			const result = await modifyUser({
-				variables: {firstName: formData.firstName, 
+				variables: {
+					firstName: formData.firstName, 
+					middleName:formData.middleName,
 					lastName: formData.lastName,
 					email: formData.email,
-					age: formData.age,
-					gender:formData.gender}			
+					dateOfBirth: formData.dateOfBirth,
+					gender:formData.gender,
+					balance:parseFloat(formData.balance)
+				}			
 				})
 				
 			    setUserData({...formData});
@@ -128,8 +136,7 @@ function Users() {
 
 	}
 	
-    if (loading || !data?.usersById) return null;
-    if (error) return <div>Error: {error.message}</div>;
+    
 	
 	return (
 	
@@ -192,10 +199,22 @@ function Users() {
 	{modifyData && <p className="catlas-text-two">User modified successfully!</p>}
 
 	<form class='create-form' onSubmit={handleSubmit}>
+	
+	<div>
+	<h4 class='catlas-text-two'>Email</h4>
+	<input type = 'email' name='email' className='create-input' value={formData.email} onChange={handleChange}
+	required/>
+	</div>
 
 	<div>
 	<h4 class='catlas-text-two'>First Name</h4>
 	<input type='text' class='create-input' name='firstName' value={formData.firstName} onChange={handleChange} required/>
+	</div>
+	
+	<div>
+	<h4 class='catlas-text-two'>Middle Name </h4>
+	<input type = 'text' name= 'middleName' placeholder='optional' className='create-input' value={formData.middleName}
+	onChange={handleChange} />
 	</div>
 
 	<div>
@@ -204,18 +223,25 @@ function Users() {
 	</div>
 
 	<div>
-	<h4 class='catlas-text-two'>Email</h4>
-	<input type='email' class='create-input' name='email' value={formData.email} onChange={handleChange} required/>
-	</div>
-
-	<div>
-	<h4 class='catlas-text-two'>Age</h4>
-	<input type='number' class='create-input' name='age' value={formData.age} onChange={handleChange} required/>
+	<h4 class='catlas-text-two'>Date of Birth</h4>
+	<input type='date' class='date-email-pass' name='dateOfBirth' onChange={handleChange} value={formData.dateOfBirth}/>
 	</div>
 
 	<div>
 	<h4 class='catlas-text-two'>Gender</h4>
-	<input type='text' class='create-input' name='gender' value={formData.gender} onChange={handleChange} required/>
+	<select name='gender' class ='email-pass' onChange={handleChange} value={formData.gender} required>
+    	<option value="" disabled>Choose gender</option>
+		<option value='male'>Male</option>
+		<option value='female'>Female</option>
+		<option value='non_binary'>Non-Binary</option>
+		<option value='fluid'>Fluid</option>
+		<option value='prefer_not_to_say'>Prefer Not To Say</option>
+	</select>
+	</div>
+	
+	<div>
+	<h4 class='catlas-text-two'>Balance</h4>
+	<input type='number' class='create-input' name='balance' value={formData.balance} onChange={handleChange} required/>
 	</div>
 
 	<div>
@@ -234,5 +260,5 @@ function Users() {
 	
 }
 
-export default Users;
+export default ModifyUsers;
 

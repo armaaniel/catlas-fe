@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const CREATE_USER = gql`
 mutation CreateUsers($firstName: String!, $middleName: String!, $lastName: String!, $email: String!, $dateOfBirth: ISO8601Date!, 
-$gender: String!) {
+$gender: String!, $password: String!) {
 	
 	createUser(input: {
 	firstName: $firstName,
@@ -19,68 +19,61 @@ $gender: String!) {
 }) {
 	user {
 	firstName
+	middleName
 	lastName
 	}
 }
 }`;
 
-interface UserFormData {
-
-	firstName:string,
-	lastName:string,
-	age:string,
-	gender:string,
-	email:string
-
-}
-
-interface CreateUserResponse {
-	
-	firstName:string,
-	lastName:string,
-}
-
 
 function CreateUsers() {
 	
-	const [formData, setFormData] = useState<UserFormData>({
+	const [formData, setFormData] = useState({
 	
+		email:'',
+		password:'',
 		firstName:'',
+		middleName:'',
 		lastName:'',
-		age:'',
+		dateOfBirth:'',
 		gender:'',
-		email:''
 	
 	})
 	
-	const [createUser, {loading, data}] = useMutation<CreateUserResponse>(CREATE_USER);
+	const [createUser, {loading, data}] = useMutation(CREATE_USER);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e) => {
 
 		const {name, value} = e.target
 	
 		setFormData({...formData, [name]: value})
 	}
 
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e) => {
 	    e.preventDefault();
 
 		try {
 			const result = await createUser({ 
 				variables: {
-				firstName:formData.firstName,
-				lastName:formData.lastName,
 				email:formData.email,
-				age:formData.age,
-				gender:formData.gender }
-		})
-		      setFormData({
-	          firstName: '',
-	          lastName: '',
-	          email: '',
-	          age: '',
-	          gender: ''
-	        });
+				password:formData.password,	
+				firstName:formData.firstName,
+				middleName:formData.middleName,
+				lastName:formData.lastName,
+				dateOfBirth:formData.dateOfBirth,
+				gender:formData.gender }})
+				
+				setFormData({
+					
+					email:'',
+					password:'',
+					firstName:'',
+					middleName:'',
+					lastName:'',
+					dateOfBirth:'',
+					gender:''
+				
+				})
 	
 		} catch (err) {
 		
@@ -101,8 +94,26 @@ function CreateUsers() {
 	<form class='create-form' onSubmit={handleSubmit}>
 	
 	<div>
+	<h4 class='catlas-text-two'>Email</h4>
+	<input type = 'email' name='email' className='create-input' value={formData.email} onChange={handleChange}
+	required/>
+	</div>
+	
+	<div>
+	<h4 class='catlas-text-two'>Password</h4>
+	<input type = 'password' name= 'password' className='create-input' value={formData.password}
+	onChange={handleChange} required/>
+	</div>
+	
+	<div>
 	<h4 class='catlas-text-two'>First Name</h4>
 	<input type='text' class='create-input' name='firstName' value={formData.firstName} onChange={handleChange} required/>
+	</div>
+	
+	<div>
+	<h4 class='catlas-text-two'>Middle Name </h4>
+	<input type = 'text' name= 'middleName' placeholder='optional' className='create-input' value={formData.middleName}
+	onChange={handleChange} />
 	</div>
 	
 	<div>
@@ -111,18 +122,20 @@ function CreateUsers() {
 	</div>
 	
 	<div>
-	<h4 class='catlas-text-two'>Email</h4>
-	<input type='email' class='create-input' name='email' value={formData.email} onChange={handleChange} required/>
-	</div>
-	
-	<div>
-	<h4 class='catlas-text-two'>Age</h4>
-	<input type='number' class='create-input' name='age' value={formData.age} onChange={handleChange} required/>
+	<h4 class='catlas-text-two'>Date of Birth</h4>
+	<input type='date' class='date-email-pass' name='dateOfBirth' onChange={handleChange} value={formData.dateOfBirth}/>
 	</div>
 	
 	<div>
 	<h4 class='catlas-text-two'>Gender</h4>
-	<input type='text' class='create-input' name='gender' value={formData.gender} onChange={handleChange} required/>
+	<select name='gender' class ='email-pass' onChange={handleChange} value={formData.gender} required>
+    	<option value="" disabled>Choose gender</option>
+		<option value='male'>Male</option>
+		<option value='female'>Female</option>
+		<option value='non_binary'>Non-Binary</option>
+		<option value='fluid'>Fluid</option>
+		<option value='prefer_not_to_say'>Prefer Not To Say</option>
+	</select>
 	</div>
 	
 	<div>
