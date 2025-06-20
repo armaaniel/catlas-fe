@@ -18,6 +18,7 @@ query fetchUserData($id: ID!) {
 	positions {
 	symbol
 	shares
+	currentPrice
 }
 }	
 }`
@@ -113,7 +114,13 @@ function UsersOverview() {
 		  <p class="details-text">{position.shares}</p>
 		  </td>
 		  
-		  <StockValue symbol={position.symbol} shares={position.shares}/>
+		  <td class='shares-cell'>
+		  <p class="details-text">{position.currentPrice}</p>
+		  </td>
+		  
+		  <td class='shares-cell'>
+		  <p class="details-text">{position.currentPrice * position.shares}</p>
+		  </td>
 	
 	    </tr>
 		
