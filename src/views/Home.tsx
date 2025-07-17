@@ -5,8 +5,6 @@ function Home() {
 
 	return (
 	
-	
-	
 	<div class='home-right'>
 	
 	
@@ -54,7 +52,6 @@ function Home() {
 			<p class='roles-text'>Meow Meow </p>
 			
 			</div>
-		
 		
 		</div>
 	

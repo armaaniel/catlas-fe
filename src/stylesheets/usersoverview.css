@@ -17,12 +17,21 @@
 	font-weight:400;
 }
 
+.portfolio-row-selected {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	background-color:#EAECEF;
+}
+
 .portfolio-row-heading {
 	text-align:left;
 	font-family:BlinkMacSystemFont;
 	color:rgb(64,68,82);
 	font-weight:400;
 	padding:0.25rem 0rem;
+	user-select: none;
 }
 
 .portfolio-row:hover {
@@ -39,4 +48,42 @@
 .shares-cell {
 	padding:0.25rem 0rem;
 }
+
+.portfolio-row-heading:hover {
+	background-color:#EAECEF;
+}
+
+.portfolio-row-heading-asc {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	padding:0.25rem 0rem;
+    box-shadow: rgba(0,0,0,0.6) 0px -3px 0px 0px inset;
+	user-select: none;
+}
+
+.portfolio-row-heading-desc {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	padding:0.25rem 0rem;
+    box-shadow: rgba(0,0,0,0.6) 0px 3px 0px 0px inset;
+	user-select: none;
+	
+}
+
+.portfolio-row-heading-asc:hover {
+	background-color:#EAECEF;
+	
+}
+
+.portfolio-row-heading-desc:hover {
+	background-color:#EAECEF;
+
+	
+}
+	
+
 

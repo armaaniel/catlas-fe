@@ -29,6 +29,10 @@ function MainLayout() {
 		<NavLink to="/margin_dashboard/" className={({ isActive }) => isActive ? "side-button-active" : "side-button"}>
 		  Margin Dashboard
 		</NavLink>
+		
+		<NavLink to="/datacat/" className={({ isActive }) => isActive ? "side-button-active" : "side-button"}>
+		  Datacat
+		</NavLink>
 				
 		</div>
 	

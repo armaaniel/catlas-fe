@@ -22,7 +22,6 @@ function UsersActivity() {
 	const {loading, error, data} = useQuery(FETCH_TRANSACTIONS, {
 	
 		variables: {id},
-		fetchPolicy: 'cache-and-network'
 		
 	})
 	

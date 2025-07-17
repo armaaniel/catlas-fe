@@ -1,0 +1,88 @@
+.dc-overview {
+	display:flex;
+	flex:1;
+	background-color:white;
+	border-radius:0.5rem;
+	flex-direction:column;
+	row-gap:1rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+}
+
+.datacat-header {
+	font-family:BlinkMacSystemFont;
+	font-weight:700;
+	color:rgb(50,48,47);
+}
+
+.dc-cell {	
+	padding:1rem 1rem;
+	border-bottom:1px solid rgb(233,236,239);
+	cursor:pointer;	
+}
+
+.dc-table {
+	border-collapse:separate;
+	border-spacing:0px;
+}
+
+.dc-row-heading {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	padding:1rem;
+	border-bottom:1px solid rgb(233,236,239);
+}
+
+.dc-row {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;	
+}
+
+.dc-row:hover {
+	background-color:#EAECEF;
+	
+}
+.trace-details {
+	display:flex;
+	flex-direction:column;
+	row-gap:0.75rem;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;		
+}
+
+.trace-breakdown {
+	
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;		
+}
+
+.dc-back-button {
+	background:none;
+	border:none;
+	text-align:left;
+  font-size:100%;
+  padding:0rem 0.5rem;
+  border-radius:4rem
+}
+
+.dc-back-button:hover {
+	background-color:#EAECEF;
+	
+}
+
+.dc-side-header-container {
+	display:flex;
+	
+}
+
+.dc-back-button-container {
+	display:flex;
+	flex:0.95;
+	justify-content:end;
+}

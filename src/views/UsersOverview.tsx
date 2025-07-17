@@ -29,7 +29,7 @@ function UsersOverview() {
 	
 	const {loading, error, data} = useQuery(FETCH_USER_DATA, {
 		variables: {id},
-	    fetchPolicy: 'no-cache'});
+	});
 			
     if (loading || !data?.usersById) return null;
     if (error) return <div>Error: {error.message}</div>;

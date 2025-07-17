@@ -1,0 +1,35 @@
+.endpoint-header-container {
+	display:flex;
+}
+
+.endpoint-select-container {
+	display:flex;
+	flex:1;
+	justify-content:end;
+}
+.pagination-container {
+	display:flex;
+	justify-content:space-evenly;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+}
+
+.page-button {
+	padding:0.5rem 1rem;
+	background-color:white;
+	border-color:rgb(233,236,239);
+	border-radius:4px;
+	border-style:solid;
+	border-width:1px;
+	font-weight:600;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.page-button:disabled {
+	color:rgb(222,226,230);
+}
+
+.page-span {
+	align-self:center;
+}
