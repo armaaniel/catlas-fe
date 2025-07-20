@@ -5,8 +5,14 @@
 	border-radius:0.5rem;
 	flex-direction:column;
 	row-gap:1rem;
-	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	box-shadow:rgba(0,0,0,0.06) 0px 0px 2px 1px;
 	border:1px solid #ECEDEE;
+	opacity:0;
+	transition:opacity 150ms;
+}
+
+.dc-overview.loaded {
+	opacity:1;
 }
 
 .datacat-header {
@@ -24,6 +30,25 @@
 .dc-table {
 	border-collapse:separate;
 	border-spacing:0px;
+	table-layout: fixed;
+}
+
+.dc-cell:nth-child(1) { 
+	width: 60%; 
+} 
+.dc-cell:nth-child(2) { 
+	width: 20%; 
+} 
+.dc-cell:nth-child(3) { 
+	width: 20%; 
+} 
+
+.dc-pagination-container {
+	display:flex;
+	justify-content:space-evenly;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	padding-bottom:1rem;
 }
 
 .dc-row-heading {
@@ -33,6 +58,32 @@
 	font-weight:400;
 	padding:1rem;
 	border-bottom:1px solid rgb(233,236,239);
+}
+
+.dc-row-heading:hover {
+	background-color:#EAECEF;
+}
+
+.dc-row-heading-asc {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	padding:1rem;
+	border-bottom:1px solid rgb(233,236,239);
+    box-shadow: rgba(0,0,0,0.6) 0px -3px 0px 0px inset;
+	user-select: none;
+}
+
+.dc-row-heading-desc {
+	text-align:left;
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	padding:1rem;
+	border-bottom:1px solid rgb(233,236,239);
+    box-shadow: rgba(0,0,0,0.6) 0px 3px 0px 0px inset;
+	user-select: none;
 }
 
 .dc-row {
@@ -73,12 +124,10 @@
 
 .dc-back-button:hover {
 	background-color:#EAECEF;
-	
 }
 
 .dc-side-header-container {
 	display:flex;
-	
 }
 
 .dc-back-button-container {

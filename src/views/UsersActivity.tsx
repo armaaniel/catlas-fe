@@ -1,6 +1,8 @@
 import {gql, useQuery} from '@apollo/client'
 import { useParams } from 'react-router-dom'
 import { NavLink } from 'react-router-dom';
+import useTransition from '../hooks/useTransition.ts'
+
 
 
 const FETCH_TRANSACTIONS = gql` 
@@ -25,10 +27,11 @@ function UsersActivity() {
 		
 	})
 	
-    if (loading || !data?.transactions) return null;
     if (error) return <p>Error: {error.message}</p>;
 	
-	const activityData = data.transactions
+	const isLoaded = useTransition(loading, data)
+	
+	const activityData = data?.transactions || []
 	
 	return (
 	
@@ -50,7 +53,7 @@ function UsersActivity() {
 	
 	</div>
 	
-	<div class='positions-container'>
+	<div class={`positions-container ${isLoaded ? 'loaded' : ''}`}>
 	<h3 class='catlas-text'>Activities</h3>
 	
 	<table class='overview-stock-table'>

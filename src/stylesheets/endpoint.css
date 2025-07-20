@@ -33,3 +33,48 @@
 .page-span {
 	align-self:center;
 }
+
+.cache-parent-container {
+	display:flex;
+	column-gap:1rem;
+	opacity:0;
+	transition:opacity 150ms;
+}
+
+.cache-parent-container.loaded {
+	opacity:1;
+}
+
+.cache-container {
+	display:flex;
+	background-color:white;
+	border-radius:0.5rem;
+	border:1px solid gray;
+	flex-direction:column;
+	row-gap:1rem;
+	padding:1rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+	width:50%;
+	transition:opacity 150ms;
+	
+}
+
+.cache-text {
+	font-family:BlinkMacSystemFont;
+	color:rgb(64,68,82);
+	font-weight:400;
+	align-self:center;
+}
+
+.no-records {
+	display:flex;
+	background-color:white;
+	border-radius:0.5rem;
+	border:1px solid gray;
+	flex-direction:column;
+	row-gap:1rem;
+	padding:1rem;
+	box-shadow:rgba(0,0,0,0.06)0px 0px 2px 1px;
+	border:1px solid #ECEDEE;
+	}

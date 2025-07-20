@@ -1,6 +1,8 @@
 import {gql, useQuery} from '@apollo/client'
 import { NavLink } from 'react-router-dom';
 import {useState} from 'react'
+import useTransition from '../hooks/useTransition.ts'
+
 
 const FETCH_MARGIN_STATUS = gql `
 query fetchMarginStatus {
@@ -18,16 +20,17 @@ function MarginDashboard() {
 	
 	const {loading, error, data} = useQuery(FETCH_MARGIN_STATUS);
 	
-	if (loading) return null
 	if (error) return <p>Error</p>
 	
-	const marginData = data.marginCallStatus
+	const isLoaded = useTransition(loading, data)
+	
+	const marginData = data?.marginCallStatus || []
 	
 	return (
 	
 	<>
 	
-	<div class='positions-container'>
+	<div class={`positions-container ${isLoaded ? 'loaded' : ''}`}>
 	<h3 class='catlas-text'>Margin Dashboard</h3>
 	
 	<table class='overview-stock-table'>

@@ -36,9 +36,9 @@ function LayoutTwo() {
 			<div className='trace-details'>
 				<p>ID: {selectedTrace.id}</p>
 				<p>Endpoint: {selectedTrace.endpoint}</p>
-				<p>Duration: {selectedTrace.duration.toFixed(3)}ms</p>
-				<p>DB Runtime: {selectedTrace.dbRuntime.toFixed(3)}ms</p>
-				<p>View Runtime: {selectedTrace.viewRuntime.toFixed(3)}ms</p>
+				<p>Duration: {selectedTrace.duration?.toFixed(0)}ms</p>
+				<p>DB Runtime: {selectedTrace.dbRuntime?.toFixed(0)}ms</p>
+				<p>View Runtime: {selectedTrace.viewRuntime?.toFixed(0)}ms</p>
 				<p>Status: {selectedTrace.status}</p>
 				<p>Created At: {selectedTrace.createdAt}</p>
 				<p>Controller Method: {selectedTrace.controller}#{selectedTrace.action}</p>

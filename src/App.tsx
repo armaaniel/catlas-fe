@@ -11,6 +11,11 @@ import UsersActivity from './views/UsersActivity'
 import MarginDashboard from './views/MarginDashboard'
 import Datacat from './views/Datacat'
 import Endpoint from './views/Endpoint'
+import Cache from './views/Cache'
+import Latent from './views/Latent'
+import MostRequested from './views/MostRequested'
+
+
 
 
 
@@ -30,12 +35,15 @@ function App() {
 		<Route path = '/users/modifyusers/:id' element={<ModifyUsers />} />
 		<Route path = '/users/activity/:id' element={<UsersActivity />} />
 		<Route path = '/datacat' element={<Datacat />} />		
+		<Route path = '/datacat/mostrequested' element={<MostRequested />} />		
 		
 	</Route>
 	
 	<Route element={<LayoutTwo/>}>
 		<Route path = '/datacat/:method/*' element={<Endpoint />} />
-		<Route path = '/datacat/cache/:method/*' element={<Endpoint />} />
+		<Route path = '/datacat/cache/:method/*' element={<Cache />} />
+		<Route path = '/datacat/latent/' element={<Latent />} />
+		
 		
 	</Route>
 	

@@ -1,29 +1,27 @@
-import '../stylesheets/datacat.css'
 import { gql, useQuery } from '@apollo/client';
 import DatacatNav from '../components/DatacatNav.tsx'
 import TraceOverviewTable from '../components/TraceOverviewTable.tsx'
 
-
-const TRACE_SUMMARY = gql `
-query fetchTraceSummary {
-	traceSummary {
+const MOST_REQUESTED_TRACES = gql`
+query mostRequestedTraces {
+	mostRequestedTraces {
 		route
 		cleanRoute
-		p99
 		totalRequests
+		p99
 	}
 }`
 
-function Datacat() {
+function MostRequested() {
 	
-	const {loading, error, data} = useQuery(TRACE_SUMMARY)
+	const {loading, error, data} = useQuery(MOST_REQUESTED_TRACES)
 	
 	const recordsPerPage = 10
-			
+	
 	if (error) { return <div>error</div> }
 	
-	const traceData = data?.traceSummary || []
-		
+	const traceData = data?.mostRequestedTraces || []
+	
 	return (
 	
 	<>
@@ -41,7 +39,7 @@ function Datacat() {
 	</>
 	
 	)
-	
+		
 }
 
-export default Datacat
+export default MostRequested
